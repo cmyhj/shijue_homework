@@ -1,0 +1,3 @@
+C:/Users/CMYHJ/Desktop/寒假任务/shijue_homework/cmake-build-debug/CMakeFiles/shijue_homework.dir
+C:/Users/CMYHJ/Desktop/寒假任务/shijue_homework/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/CMYHJ/Desktop/寒假任务/shijue_homework/cmake-build-debug/CMakeFiles/rebuild_cache.dir
