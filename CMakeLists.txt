@@ -3,4 +3,6 @@ project(shijue_homework)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(shijue_homework main.cpp)
+add_executable(shijue_homework main.cpp
+        Robot.h
+        Robot.cpp)
