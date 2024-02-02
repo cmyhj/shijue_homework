@@ -71,7 +71,7 @@ public:
 
     void HotSet(int team, int number, int hotDelta) {
         for (auto &it: Robots) {//在池中寻找
-            if (!it->is_dead_ && it->type_ == 0 && it->team_ == team && it->number_ == number) {
+            if (!it->is_dead_ && it->type_ == 0 && it->team_ == team && it->number_ == number) {//满足条件
                 it->hot_ += hotDelta;
             }
         }
@@ -79,8 +79,7 @@ public:
 
     void LevelSet(int team, int number, int level) {
         for (auto &it: Robots) {//在池中寻找
-            if (!it->is_dead_ && it->type_ == 0 && it->team_ == team && it->number_ == number && it->level_ <= level) {
-
+            if (!it->is_dead_ && it->type_ == 0 && it->team_ == team && it->number_ == number && it->level_ <= level) {//满足条件
                 it->level_ = level;
                 it->HP_max_ = 100 + (level * 2 - 3) * 50;
                 it->HP_ = it->HP_max_;
@@ -94,18 +93,22 @@ int main() {
     Manager manager;
     int turn;
     int last_time = 0;
+
     std::cin >> turn;
+
     for (int i = 0; i < turn; ++i) {
         int time;
         char command;
         int team;
         int number;
         int data;
+
         std::cin >> time;
         std::cin >> command;
         std::cin >> team;
         std::cin >> number;
         std::cin >> data;
+
         for (int now_time = last_time; now_time < time; ++now_time) {
             manager.HotDot();
         }
@@ -125,7 +128,7 @@ int main() {
             default:
                 break;
         }
-        last_time = time;
+        last_time = time;//更新时间
     }
     return 0;
 }

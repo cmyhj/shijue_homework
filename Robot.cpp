@@ -27,11 +27,11 @@ void Robot::HotDamageAndSet() {
         if (hot_ < 0) {
             hot_ = 0;//热量不小于0
         }*/
-        if (hot_ > hot_max_) {
+        if (hot_ > hot_max_) {//过热
             HP_ -= (hot_ - hot_max_);
         }
         hot_--;
-        if (hot_ < 0) {
+        if (hot_ < 0) {//热量不小于0
             hot_ = 0;
         }
     }
