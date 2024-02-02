@@ -25,6 +25,16 @@ private:
     std::vector<std::shared_ptr<Robot>> Robots;
 public:
 
+    void HotDot(int time) {
+        for (auto &it: Robots) {
+            if (!it->is_dead_) {
+                it->HotDamageAndSet(time);//热量结算
+                it->TellIsDead();//生死判断
+                it->TimeSet(time);
+            }
+        }
+    }
+
     void addRobot(int time, int team, int number, int type) {
         bool finish = false;
         for (auto &it: Robots) {//在池中寻找
@@ -111,11 +121,15 @@ int main() {
         int team;
         int number;
         int data;
+        int last_time=0;
         std::cin >> time;
         std::cin >> command;
         std::cin >> team;
         std::cin >> number;
         std::cin >> data;
+        for (int now_time = last_time; now_time < time; ++now_time) {
+            manager.HotDot(now_time);
+        }
         switch (command) {
             case 'A':
                 manager.addRobot(time, team, number, data);
