@@ -65,7 +65,6 @@ public:
             if (!it->is_dead_ && it->team_ == team && it->number_ == number) {
                 it->HP_ -= damage;
                 it->TellIsDead();//生死判断
-
             }
             it->TimeSet(time);//刷新时间
         }
