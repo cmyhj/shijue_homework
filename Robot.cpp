@@ -6,40 +6,40 @@
 using namespace std;
 
 Robot::Robot(int time, int team, int number, int type) {
-    LastCommandTime = time;
-    Team = team;
-    Number = number;
-    Type = type;
+    last_command_time_ = time;
+    team_ = team;
+    number_ = number;
+    type_ = type;
 }
 
 void Robot::HotDamageAndSet(int time) {
-    if (!isDead) {//找到对应机器人
-        int TimeGap = time - LastCommandTime;
-        if (Hot > Hot_Max) {//过热
-            int HotGap = Hot - Hot_Max;
+    if (!is_dead_) {//找到对应机器人
+        int TimeGap = time - last_command_time_;
+        if (hot_ > hot_max_) {//过热
+            int HotGap = hot_ - hot_max_;
 
             if (HotGap > TimeGap) {//热量未减至小于Max
-                HP -= (HotGap * 2 - TimeGap + 1) * TimeGap / 2;
+                HP_ -= (HotGap * 2 - TimeGap + 1) * TimeGap / 2;
             } else {//热量减到小于Max
-                HP -= HotGap * (HotGap + 1) / 2;
+                HP_ -= HotGap * (HotGap + 1) / 2;
             }
         }
-        Hot -= TimeGap;//set
-        if (Hot<0){
-            Hot=0;//热量不小于0
+        hot_ -= TimeGap;//set
+        if (hot_ < 0) {
+            hot_ = 0;//热量不小于0
         }
     }
 }
 
 void Robot::TimeSet(int time) {
-    LastCommandTime = time;
+    last_command_time_ = time;
 }
 
 void Robot::TellIsDead() {
-    if (HP <= 0) {//似了
-        isDead = true;
-        std::cout << "D " << Team << " " << Number << std::endl;
-        std::cout << "TIME:" << LastCommandTime << std::endl;//<<""<<Number<<std::endl;
+    if (HP_ <= 0) {//似了
+        is_dead_ = true;
+        std::cout << "D " << team_ << " " << number_ << std::endl;
+        std::cout << "HP_:" << last_command_time_ << std::endl;//<<""<<number_<<std::endl;
     }
 }
 

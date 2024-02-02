@@ -6,17 +6,17 @@
 class Bubin : virtual public Robot {
 public:
     Bubin(int time, int team, int number, int type) : Robot(time, team, number, type) {
-        HP_Max = 100;
-        HP = HP_Max;
-        Hot_Max = 100;
+        HP_max_ = 100;
+        HP_ = HP_max_;
+        hot_max_ = 100;
     }
 };
 
 class Gongcheng : virtual public Robot {
 public:
     Gongcheng(int time, int team, int number, int type) : Robot(time, team, number, type) {
-        HP_Max = 300;
-        HP = HP_Max;
+        HP_max_ = 300;
+        HP_ = HP_max_;
     }
 };
 
@@ -28,15 +28,15 @@ public:
     void addRobot(int time, int team, int number, int type) {
         bool finish = false;
         for (auto &it: Robots) {//在池中寻找
-            if (!it->isDead) {
+            if (!it->is_dead_) {
                 it->HotDamageAndSet(time);//热量结算
                 it->TellIsDead();//生死判断
             }
-            if (it->Team == team && it->Number == number && it->Type == type) {
-                if (it->isDead) {//复活
-                    it->HP = it->HP_Max;
-                    it->Hot = 0;
-                    it->isDead = false;
+            if (it->team_ == team && it->number_ == number && it->type_ == type) {
+                if (it->is_dead_) {//复活
+                    it->HP_ = it->HP_max_;
+                    it->hot_ = 0;
+                    it->is_dead_ = false;
 
                 }
                 finish = true;
@@ -58,12 +58,12 @@ public:
 
     void hurtRobot(int time, int team, int number, int damage) {
         for (auto &it: Robots) {//在池中寻找
-            if (!it->isDead) {
+            if (!it->is_dead_) {
                 it->HotDamageAndSet(time);//热量结算
                 it->TellIsDead();//生死判断
             }
-            if (!it->isDead && it->Team == team && it->Number == number) {
-                it->HP -= damage;
+            if (!it->is_dead_ && it->team_ == team && it->number_ == number) {
+                it->HP_ -= damage;
                 it->TellIsDead();//生死判断
 
             }
@@ -73,12 +73,12 @@ public:
 
     void HotSet(int time, int team, int number, int hotDelta) {
         for (auto &it: Robots) {//在池中寻找
-            if (!it->isDead) {
+            if (!it->is_dead_) {
                 it->HotDamageAndSet(time);//热量结算
                 it->TellIsDead();//生死判断
             }
-            if (!it->isDead && it->Type == 0 && it->Team == team && it->Number == number) {
-                it->Hot += hotDelta;
+            if (!it->is_dead_ && it->type_ == 0 && it->team_ == team && it->number_ == number) {
+                it->hot_ += hotDelta;
             }
             it->TimeSet(time);//刷新时间
         }
@@ -86,16 +86,16 @@ public:
 
     void LevelSet(int time, int team, int number, int level) {
         for (auto &it: Robots) {//在池中寻找
-            if (!it->isDead) {
+            if (!it->is_dead_) {
                 it->HotDamageAndSet(time);//热量结算
                 it->TellIsDead();//生死判断
             }
-            if (!it->isDead && it->Type == 0 && it->Team == team && it->Number == number && it->Level <= level) {
+            if (!it->is_dead_ && it->type_ == 0 && it->team_ == team && it->number_ == number && it->level_ <= level) {
 
-                it->Level = level;
-                it->HP_Max = 100 + (level * 2 - 3) * 50;
-                it->HP = it->HP_Max;
-                it->Hot_Max = level * 100;
+                it->level_ = level;
+                it->HP_max_ = 100 + (level * 2 - 3) * 50;
+                it->HP_ = it->HP_max_;
+                it->hot_max_ = level * 100;
             }
             it->TimeSet(time);//刷新时间
         }

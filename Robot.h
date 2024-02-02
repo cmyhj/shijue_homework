@@ -12,20 +12,23 @@ using namespace std;
 
 class Robot {
 public:
-    int Type;
-    int Level = 1;
-    int Team;
-    int Number;
-    int HP_Max;
-    int Hot_Max = 0;
-    int HP;
-    int Hot = 0;
-    int LastCommandTime=0;
-    bool isDead= false;
+    int type_;
+    int level_ = 1;
+    int team_;
+    int number_;
+    int HP_max_;
+    int hot_max_ = 0;
+    int HP_;
+    int hot_ = 0;
+    int last_command_time_ = 0;
+    bool is_dead_ = false;
 
     Robot(int time, int team, int number, int type);
+
     void HotDamageAndSet(int time);
+
     void TimeSet(int time);
+
     void TellIsDead();
 };
 
