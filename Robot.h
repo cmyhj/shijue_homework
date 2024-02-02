@@ -20,14 +20,12 @@ public:
     int hot_max_ = 0;
     int HP_;
     int hot_ = 0;
-    int last_command_time_ = 0;
     bool is_dead_ = false;
 
-    Robot(int time, int team, int number, int type);
+    Robot(int team, int number, int type);
 
-    void HotDamageAndSet(int time);
+    void HotDamageAndSet();
 
-    void TimeSet(int time);
 
     void TellIsDead();
 };

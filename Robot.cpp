@@ -5,16 +5,15 @@
 
 using namespace std;
 
-Robot::Robot(int time, int team, int number, int type) {
-    last_command_time_ = time;
+Robot::Robot(int team, int number, int type) {
     team_ = team;
     number_ = number;
     type_ = type;
 }
 
-void Robot::HotDamageAndSet(int time) {
+void Robot::HotDamageAndSet() {
     if (!is_dead_) {//找到对应机器人
-        int TimeGap = time - last_command_time_;
+        /*int TimeGap = time - last_command_time_;
         if (hot_ > hot_max_) {//过热
             int HotGap = hot_ - hot_max_;
 
@@ -27,13 +26,17 @@ void Robot::HotDamageAndSet(int time) {
         hot_ -= TimeGap;//set
         if (hot_ < 0) {
             hot_ = 0;//热量不小于0
+        }*/
+        if (hot_ > hot_max_) {
+            HP_ -= (hot_ - hot_max_);
+        }
+        hot_--;
+        if (hot_ < 0) {
+            hot_ = 0;
         }
     }
 }
 
-void Robot::TimeSet(int time) {
-    last_command_time_ = time;
-}
 
 void Robot::TellIsDead() {
     if (HP_ <= 0) {//似了
