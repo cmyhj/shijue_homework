@@ -2,7 +2,8 @@
 #include <vector>
 #include <memory>
 #include "Robot.h"
-
+#define BuBinRobot 0
+#define GongCheng0Robot 1
 class BuBin : virtual public Robot {
 public:
     BuBin(int team, int number, int type) : Robot(team, number, type) {
@@ -49,10 +50,10 @@ public:
         }
 
         if (!finish) {//新建
-            if (type == 0) {
+            if (type == BuBinRobot) {
                 std::shared_ptr<Robot> robot = std::make_shared<BuBin>(team, number, type);
                 Robots.push_back(robot);
-            } else if (type == 1) {
+            } else if (type == GongCheng0Robot) {
                 std::shared_ptr<Robot> robot = std::make_shared<GongCheng>(team, number, type);
                 Robots.push_back(robot);
             }
@@ -71,7 +72,7 @@ public:
 
     void HotSet(int team, int number, int hotDelta) {
         for (auto &it: Robots) {//在池中寻找
-            if (!it->is_dead_ && it->type_ == 0 && it->team_ == team && it->number_ == number) {//满足条件
+            if (!it->is_dead_ && it->type_ == BuBinRobot && it->team_ == team && it->number_ == number) {//满足条件
                 it->hot_ += hotDelta;
             }
         }
@@ -79,7 +80,7 @@ public:
 
     void LevelSet(int team, int number, int level) {
         for (auto &it: Robots) {//在池中寻找
-            if (!it->is_dead_ && it->type_ == 0 && it->team_ == team && it->number_ == number && it->level_ <= level) {//满足条件
+            if (!it->is_dead_ && it->type_ == BuBinRobot && it->team_ == team && it->number_ == number && it->level_ <= level) {//满足条件
                 it->level_ = level;
                 it->HP_max_ = 100 + (level * 2 - 3) * 50;
                 it->HP_ = it->HP_max_;
