@@ -28,8 +28,10 @@ public:
     void addRobot(int time, int team, int number, int type) {
         bool finish = false;
         for (auto &it: Robots) {//在池中寻找
-            it->HotDamageAndSet(time);//热量结算
-            it->TellIsDead();//生死判断
+            if (!it->isDead) {
+                it->HotDamageAndSet(time);//热量结算
+                it->TellIsDead();//生死判断
+            }
             if (it->Team == team && it->Number == number && it->Type == type) {
                 if (it->isDead) {//复活
                     it->HP = it->HP_Max;
@@ -56,8 +58,10 @@ public:
 
     void hurtRobot(int time, int team, int number, int damage) {
         for (auto &it: Robots) {//在池中寻找
-            it->HotDamageAndSet(time);//热量结算
-            it->TellIsDead();//生死判断
+            if (!it->isDead) {
+                it->HotDamageAndSet(time);//热量结算
+                it->TellIsDead();//生死判断
+            }
             if (!it->isDead && it->Team == team && it->Number == number) {
                 it->HP -= damage;
                 it->TellIsDead();//生死判断
@@ -69,8 +73,10 @@ public:
 
     void HotSet(int time, int team, int number, int hotDelta) {
         for (auto &it: Robots) {//在池中寻找
-            it->HotDamageAndSet(time);//热量结算
-            it->TellIsDead();//生死判断
+            if (!it->isDead) {
+                it->HotDamageAndSet(time);//热量结算
+                it->TellIsDead();//生死判断
+            }
             if (!it->isDead && it->Type == 0 && it->Team == team && it->Number == number) {
                 it->Hot += hotDelta;
             }
@@ -80,8 +86,10 @@ public:
 
     void LevelSet(int time, int team, int number, int level) {
         for (auto &it: Robots) {//在池中寻找
-            it->HotDamageAndSet(time);//热量结算
-            it->TellIsDead();//生死判断
+            if (!it->isDead) {
+                it->HotDamageAndSet(time);//热量结算
+                it->TellIsDead();//生死判断
+            }
             if (!it->isDead && it->Type == 0 && it->Team == team && it->Number == number && it->Level <= level) {
 
                 it->Level = level;
@@ -111,16 +119,16 @@ int main() {
         std::cin >> data;
         switch (command) {
             case 'A':
-                manager.addRobot(time,team,number,data);
+                manager.addRobot(time, team, number, data);
                 break;
             case 'F':
-                manager.hurtRobot(time,team,number,data);
+                manager.hurtRobot(time, team, number, data);
                 break;
             case 'H':
-                manager.HotSet(time,team,number,data);
+                manager.HotSet(time, team, number, data);
                 break;
             case 'U':
-                manager.LevelSet(time,team,number,data);
+                manager.LevelSet(time, team, number, data);
                 break;
             default:
                 break;

@@ -34,6 +34,7 @@ void Robot::TellIsDead() {
     if (HP <= 0) {//似了
         isDead = true;
         std::cout<<"D "<<Team<<" "<<Number<<std::endl;
+        std::cout<<"HP:"<<HP<<std::endl;//<<""<<Number<<std::endl;
     }
 }
 

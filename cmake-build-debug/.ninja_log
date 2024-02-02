@@ -1,15 +1,4 @@
 # ninja log v5
-0	216	7283258363766498	CMakeFiles/shijue_homework.dir/main.cpp.obj	4c6b90e2b6ffa96
-217	303	7283258364610476	shijue_homework.exe	224b06f07cc3c323
-1	296	7283985087019177	CMakeFiles/shijue_homework.dir/Robot.cpp.obj	5bfc6778fc4ca6c8
-4	298	7283985087042492	CMakeFiles/shijue_homework.dir/main.cpp.obj	4c6b90e2b6ffa96
-299	446	7283985088484167	shijue_homework.exe	bff0b604ab3a6e3f
-2	186	7283985513175801	CMakeFiles/shijue_homework.dir/Robot.cpp.obj	5bfc6778fc4ca6c8
-5	192	7283985513230766	CMakeFiles/shijue_homework.dir/main.cpp.obj	4c6b90e2b6ffa96
-192	242	7283985513703932	shijue_homework.exe	bff0b604ab3a6e3f
-2	182	7283986539245842	CMakeFiles/shijue_homework.dir/Robot.cpp.obj	5bfc6778fc4ca6c8
-4	192	7283986539341016	CMakeFiles/shijue_homework.dir/main.cpp.obj	4c6b90e2b6ffa96
-192	242	7283986539819311	shijue_homework.exe	bff0b604ab3a6e3f
-2	177	7283987472105759	CMakeFiles/shijue_homework.dir/Robot.cpp.obj	5bfc6778fc4ca6c8
-5	189	7283987472223238	CMakeFiles/shijue_homework.dir/main.cpp.obj	4c6b90e2b6ffa96
-189	240	7283987472704816	shijue_homework.exe	bff0b604ab3a6e3f
+4	306	7285594008466232	CMakeFiles/shijue_homework.dir/main.cpp.obj	4c6b90e2b6ffa96
+306	364	7285594009029974	shijue_homework.exe	bff0b604ab3a6e3f
+2	190	7285594007320837	CMakeFiles/shijue_homework.dir/Robot.cpp.obj	5bfc6778fc4ca6c8
