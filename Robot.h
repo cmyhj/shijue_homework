@@ -4,25 +4,29 @@
 
 #ifndef SHIJUE_HOMEWORK_ROBOT_H
 #define SHIJUE_HOMEWORK_ROBOT_H
+
 #include <iostream>
 
 
 using namespace std;
 
-class Robot
-{
+class Robot {
 public:
     int Type;
-    int Grade=1;
+    int Level = 1;
     int Team;
     int Number;
     int HP_Max;
-    int Hot_Max=0;
+    int Hot_Max = 0;
     int HP;
-    int Hot=0;
-    bool Dead = false;
+    int Hot = 0;
+    int LastCommandTime=0;
+    bool isDead= false;
 
-    Robot(int team,int number,int type);
+    Robot(int time, int team, int number, int type);
+    void HotDamageAndSet(int time);
+    void TimeSet(int time);
+    void TellIsDead();
 };
 
 
